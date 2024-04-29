@@ -1,0 +1,287 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    /* width: 100vw; */
+    height: 100vh;
+    background-color: #f9f9f9;
+    color: black;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    color: #fff;
+}
+
+p {
+    line-height: 1.5;
+}
+
+nav {
+    background-color: black;
+    padding: 15px;
+    text-align: left;
+    position: relative;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav > ul > li:nth-child(1) > a > svg {
+    top: 3px;
+    left: 3px;
+    position: absolute;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 4px;
+}
+
+.hero-section {
+    background-image: url('/assets/images/background.jpg');
+    color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    margin: 0 0 20px;
+}
+
+.cta-button-rg {
+    background-color: #5082ff69;
+    color: white;
+    margin: 20px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta-button-rg:hover {
+    background-color: rgb(130, 126, 235);
+}
+
+.cta-button-signin {
+    text-decoration: none;
+    color: white;
+}
+
+.cta-button-signin:hover {
+    text-decoration: underline;
+}
+
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+    height: 300px;
+}
+
+.lobby-section {
+    padding: 50px 20px;
+    height: auto;
+}
+
+
+footer {
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.chat-area {
+    background: linear-gradient(to top,rgba(10, 101, 181, 0.5), rgb(5, 0, 138));
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    max-height: 300px;
+    height: 300px;
+    padding: 0 20px;
+    overflow-y: scroll;
+}
+
+.chat-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.chat-form > input {
+    width: 100%;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px;
+    border-color: aqua;
+    border-width: 1px;
+}
+
+
+
+/* chat container */
+/* .chat-container{
+    position: absolute;
+    bottom: 24%;
+    right : 5%;
+    border-radius: 6px;
+    height: 400px;
+    overflow: hidden scroll;;
+
+} */
+
+/* .livechat{
+    background: white;
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
+    width: 75%;
+    border-radius: 1em;
+    box-shadow: 14px 14px 38px rgba(101, 196, 199, 0.08);
+
+    .header{
+        background: rgb(201, 174, 134);
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        border-top-right-radius: 1em;
+        border-top-left-radius: 1em;
+    }
+    h4{
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    .content{
+        padding: 1em;
+
+    }
+    .chat{
+        height: 300px;
+        overflow-y: scroll;
+    }
+    .message p.name{
+        margin-bottom: 0;
+        margin-top:0;
+    }
+    .message p.msg{
+        margin-bottom: 0;
+    }
+
+    .message.operator .name{
+        color: #5200FF;
+    }
+    .message.user .name, .message.user .msg{
+        text-align: right;
+        margin-right: 1em;
+    }
+}
+
+svg.bubble{
+    position: absolute;
+    width: 4em;
+    bottom: 2em;
+    right: 2em;
+    cursor: pointer;
+
+}
+
+svg.exit {
+    width: 1.5em;
+    cursor: pointer;
+}
+
+.navRight{
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #fff; 
+    border-left: 1px solid #ddd; 
+} */
+
+a.menu{
+    
+    height:30;
+    width: 50px;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 30px;
+
+}
+
+.navbar-nav .nav-link.a:hover{
+    background-color: grey;
+}
+
+.navbar-nav .dropdown-menu {
+    margin-top: 30px;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.064);
+    backdrop-filter: blur(5px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+    padding: 20px;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+.menu-button{
+    display: none;
+}
+
+@media(max-width: 800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+
+@media(max-width: 400px){
+    .sidebar{
+        width:100%;
+    }
+}
+
+

@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/forms.css"/>
 </head>
 <body>
-    <h2>Login</h2>
-    <% if (locals.errorMessage) { %>
-        <p style="color: red;"><%= errorMessage %></p>
-    <% } %>
-    <form method="POST" action="/login">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <%- include('partials/navigation') %>
+
+    <section>
+        <main class="container">
+
+            <div class="form-container">
+                <h2> Login to Your Account </h2>
+                <div style="color: red;"><%= locals.errorMessage %></div>
+                <form class="input-form" action="/login" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                    <a class="atag" href="/register"> 
+                        Don't have an account? Register Here!
+                    </a>
+                </form>
+            </div>
+            
+        </main>
+        
+    </section>
+    <%- include('partials/footer') %>    
 </body>
 </html>

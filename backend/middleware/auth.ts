@@ -38,6 +38,7 @@ const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
         res.redirect('/login');
     }
 }
+
 const requiredLoginAllSites = (req: Request, res: Response, next: NextFunction) => {
 	(req.path != '/login') ? isAuthenticated(req, res, next) : next();
 }

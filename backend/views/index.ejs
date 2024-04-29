@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
-    
-  </head> 
-  <body>
-    <%- include('partials/navigation') %>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bingo Game</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<%- include('partials/navigation') %>
 
-  
-  </body>
+		<section id="home" class="hero-section">
+			<h1>Welcome to Bingo!!!</h1>
+			<p>We're excited to have you play with us. Let's see if today is your lucky day. Good luck and have fun!</p>
+			<a href="/register" class="cta-button-rg">Register</a>
+			<a href="login" class="cta-button-signin">Sign In</a>
+		</section>
+
+		<section id="lobby" class="lobby-section">
+			<h2>Your Recent Activities</h2>
+            <p>Please login to see your activities</p>
+		</section>
+
+		<section id="about" class="about-section">
+			<h2>About Us</h2>
+			<p>Here, you can enjoy the classic game of Bingo from the comfort of your own home. Play with friends or join a public game to meet new players from around the world. Whether you're a seasoned Bingo enthusiast or new to the game, our user-friendly interface and exciting gameplay will keep you entertained. Take part in thrilling rounds, win amazing prizes, and experience the joy of calling out "Bingo!" Join us today for hours of fun and engaging entertainment!</p>
+		</section>
+        <%- include('partials/footer') %>
+	</body>
 </html>

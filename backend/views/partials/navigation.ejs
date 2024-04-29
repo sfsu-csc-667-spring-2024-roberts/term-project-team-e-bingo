@@ -1,9 +1,31 @@
-<nav class="container">
-	<ul>
-		<li>Bingo Game</li>
-	</ul>
-	<ul>
-		<li><a href="/">Landing</a></li>
-		<li><a href="/lobby">Lobby</a></li>
-	</ul>
+<nav>
+    <ul>        
+        <li><a href="/" class="nav-link">
+            <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+                <rect x="10" y="10" width="50" height="50" stroke="black" fill="white"/>
+                <line x1="10" y1="30" x2="60" y2="30" stroke="black"/>
+                <line x1="10" y1="50" x2="60" y2="50" stroke="black"/>
+                <line x1="30" y1="10" x2="30" y2="60" stroke="black"/>
+                <line x1="50" y1="10" x2="50" y2="60" stroke="black"/>
+                
+                <circle cx="70" cy="30" r="10" fill="red"/>
+                <text x="70" y="35" fill="white" font-size="8" text-anchor="middle">B</text>
+                
+                <circle cx="90" cy="30" r="10" fill="blue"/>
+                <text x="90" y="35" fill="white" font-size="8" text-anchor="middle">I</text>
+                
+                <circle cx="70" cy="50" r="10" fill="green"/>
+                <text x="70" y="55" fill="white" font-size="8" text-anchor="middle">N</text>
+                
+                <circle cx="90" cy="50" r="10" fill="yellow"/>
+                <text x="90" y="55" fill="black" font-size="8" text-anchor="middle">G</text>
+                
+                <circle cx="80" cy="70" r="10" fill="purple"/>
+                <text x="80" y="75" fill="white" font-size="8" text-anchor="middle">O</text>
+            </svg>
+            Home
+        </a></li>
+        <li><a href="/lobby" class="nav-link">Lobby</a></li>
+        <li><a href="/profile" class="nav-link">Profile</a></li>
+    </ul>
 </nav>

@@ -1,0 +1,80 @@
+body {
+    height: 100%;
+    background-image: url('/assets/images/background.jpg');
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+section {
+    height: 88vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container {
+    padding-top: 20px;
+    border-radius: 15px;
+    max-width: 450px;
+    min-width: 350px;
+}
+
+
+.form-container {
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px 20px;
+    z-index: 10;
+    border: #ffffff solid thin;
+    background-color: #0000007c;
+}
+
+.form-container > h2 {
+    font-size: 28px;
+}
+
+.input-form {
+    margin: 0 20px;
+}
+
+.input-form > input {
+    width: 100%;
+    margin: 30px 0;
+    padding: 10px 0 10px 5px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.input-form > input[type="submit"] {
+    padding: 12px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font: 500 20px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: none;
+    background: #6072ff;
+}
+
+.input-form > input[type="submit"]:hover {
+    background: #36ab63;
+}
+
+.atag {
+    font: 400 12px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    float: right;
+    padding: 20px;
+}
+
+.checkbox {
+    font: 400 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    float: left;
+    padding: 10px;
+}
+
+.checkbox > a {
+    color: #ffffff;
+}

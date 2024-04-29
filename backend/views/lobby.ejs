@@ -1,11 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lobby</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bingo Game</title>
+		<link rel="stylesheet" href="css/lobby.css" />
+		<link rel="stylesheet" href="css/menu.css" />
+		<!-- <link rel="stylesheet" href="css/styles.css" /> -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" >
+
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css" integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+
+
+	</head>
+	<body >
+
+		<%- include('partials/menu') %> 
+		<section>
+
+			<div class="lobbyBox">
+				<div class="form">
+					<form>
+						<div class="inputBx">
+							<input class="inp" type="text" placeholder="Create a room">
+							
+							<button alt="Create" class="btn buttonB">
+								<span style="--i: 2">C</span>
+								<span style="--i: 3">r</span>
+								<span style="--i: 4">e</span>
+								<span style="--i: 5">a</span>
+								<span style="--i: 6">t</span>
+								<span style="--i: 7">e</span>
+
+							</button>
+						</div>
+
+						<table border="1" class="tb">
+							<thead class="">
+							  <tr>
+								<th>Room name</th>
+								<th>Action</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>Sample room</td>
+								<td>Delete</td>
+							  </tr>
+							  <tr>
+								<td>Power danger</td>
+								<td>Join</td>
+							  </tr>
+							</tbody>
+						  </table>
+						  
+					</form>
+				</div>
+			</div>
+			
+
+			<div>
+				<div class="image1">
+					<img  />
+				</div>
+				
+				<div class="image2">
+					<img  />
+				</div>
+			</div>
+
+
+			<!-- pop up chat -->
+			<div class="popUp">
+			<h1>Chat Popup</h1>
+			<p>CLick on the chat button to start chatting</p>
+		
+			<button class="chat-btn bn">
+				<i class="fa-solid fa-comment"></i>
+			</button>
+
+			<div class="chat-popup">
+				<div class="badge">1</div>
+				<div class="chat-area">
+					<div class="income-msg">
+						<img src="img/person.jpg" alt="">
+						<span class="msg">Hi, How can I help you?</span>
+					</div>
+				</div>
+				<div class="input-area">
+					<input type="text">
+					<button class="bn" id="emoji-btn">&#128512;</button>
+					<button class="submit bn"><i class="fa-solid fa-paper-plane"></i></button>
+				</div>
+			</div>
+			</div>
+		
+
+		</section>	
+
+		  <script src="/socket.io/socket.io.js"></script>
+		 
+
+		   
+		<script src="script.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+		
+		<!-- emoji button -->
+		<!-- npm install @joeattardi/emoji-button -->
+
+		<!-- <script src="main.js"></script> -->
+		<!-- emoji picker -->
+		<script src="https://cdn.jsdeliver.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
+		<script>
+			const emojiBtn = document.querySelector('#emoji-btn');
+			const picker = new EmojiButton();
+			window.addEventListener('DOMContentLoaded', () =>{
+
+				picker.on('emoji', emoji => {
+					document.querySelector('input').value += emoji;
+				});
+
+				emojiBtn.addEventListener('click', () =>{
+					picker.togglePicker(emojiBtn);
+				});
+			});
+		</script>
+		
+	</body>
 </html>
+
+
+
+
+
+

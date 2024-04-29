@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration</title>
+		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="/css/forms.css" />
+	</head>
+	<body>
+		<%- include('partials/navigation') %>
+		<section>
+			<main class="container">
+				<div class="form-container">
+					<h1>Registration Form</h1>
+					<form class="input-form" action="/register" method="POST">
+						<input class="text-input" type="text" name="username" id="username" placeholder="Username" required />
+						<input class="text-input" type="email" name="email" id="email" placeholder="Email" required />
+						<input class="text-input" type="password" name="password" id="password" placeholder="Password" required />
+						<input class="text-input" type="password" name="confirmPassword" id="cpassword" placeholder="Confirm Password" required />
+
+						<label class="checkbox">
+							<input type="checkbox" id="aoc" name="ageCheck" required />
+							I am 21 years of age or older.
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" id="tos-pr" name="tosCheck" required />
+							I accept <a href="#">Terms of Service</a> and <a href="#">Privacy Rules</a>
+						</label>
+
+						<input type="submit" value="Register" />
+
+						<a class="atag" href="/login"> Already have an account? Log in Here! </a>
+					</form>
+				</div>
+			</main>
+		</section>
+        <%- include('partials/footer') %>
+	</body>
+	<script src="/script/forms.js"></script>
+</html>
