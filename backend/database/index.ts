@@ -1,11 +1,11 @@
 import { Pool, PoolConfig, QueryResult } from 'pg';
-require('dotenv').config({path: './config.env'})
+require('dotenv').config()
 
-const result = require('dotenv').config({ path: './backend/database/config.env' });
+// const result = require('dotenv').config({ path: './backend/database/config.env' });
 
-if (result.error) {
-  console.error(result.error);
-}
+// if (result.error) {
+//   console.error(result.error);
+// }
 
 const dbConfig: PoolConfig = {
   user: process.env.POSTGRE_ID,
