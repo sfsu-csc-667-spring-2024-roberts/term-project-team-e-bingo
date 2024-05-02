@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    /* background-color: rgb(216, 183, 38); */
+}
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+.card{
+    width: auto;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(201, 131, 26);
+    border-radius: 8px;
+    overflow:hidden;
+    box-shadow: 0px;
+}
+.card i{
+    height: auto;
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+.card-content{
+    padding: 16px;
+
+}
+.input-box{
+    padding: 10px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+
+}
+.waitButton{
+    padding: 10px;
+    border-radius: 20px;
+    border-color: black;
+    height: auto;
+    display: flex;
+    /* justify-content: center; */
+}
+.name{
+    display: flex;
+    justify-content: center;
+}

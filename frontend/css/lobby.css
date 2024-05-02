@@ -1,12 +1,14 @@
 
 *{
     /* margin: 0;
+    
     height: auto;
     font-family: "Nunito"; */
     /* background: rgb(235, 235,235); */
     height: auto;
     margin: 0;
     padding: 0;
+    /* background-color: rgba(69, 64, 64, 0.927); */
     /* background-image: url('/assets/images/lobbyBg.gif'); */
     width: auto;
     background-repeat: no-repeat;
@@ -15,13 +17,23 @@
     /* box-sizing: border-box; */
 
 }
+.inputBx {
+    width: auto;
+    display: flex;
+    align-items: center; /* Vertically center items */
+}
+
 
 .inp{
-    padding: 5px;
-    font-size: larger;
+    /* padding: 5px; */
+    /* font-size: larger;  */
     border-radius: 15px;
     align-items: center;
     text-align: center;
+
+    
+    flex: 1; 
+    margin-right: 10px;
 }
 .btn{
 
@@ -37,6 +49,7 @@
     align-items: center;
     justify-content: center;
     /* min-height: 5vh; */
+    /* width: auto; */
     margin: 120px ;
     /* padding: 30px; */
     /* background: linear-gradient(-30deg, #03a9f4 0%,#3a78b7 50%, #262626 50%, #607d8b 100%); */
@@ -47,20 +60,20 @@
     border-radius: 6px;
     /* box-shadow: 0 5px 35px rgba(0,0,0,0.2); */
 
+
+    width: 80%; 
+    margin: 0 auto;
 }
 .buttonB{
     border: none;
     outline: none;
-    background: #ff1e6b;
-    box-shadow: 0 7px 0 0 #460ec9;
+    background: rgb(201, 131, 26);
+    box-shadow: 0 7px 0 0 black;
     border-radius: 12px;
-    /* display: flex; */
-    /* align-items: center; */
-    justify-self: center;
-    height: 50px;
-    padding: 0 20px;
+    height: 40px;
+    padding: 10px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     /* letter-spacing: 4px; */
     overflow: hidden;
     position: relative;
@@ -72,8 +85,6 @@ button::before{
     position:absolute;
     content: attr(alt);
     inset: 0;
-    /* text-transform: uppercase; */
-    /* color: white; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +101,7 @@ button:hover::before{
     transform: translateY(100%);
 }
 button span{
-    color: white;
+    color: rgb(230, 146, 227);
     transform: translateY(-20px);
     opacity: 0;
     transition: all 2s ease;
@@ -146,6 +157,7 @@ button:hover span{
     outline: none;
     /* z-index: 20;  */
 }
+
 
 
 .livechat{

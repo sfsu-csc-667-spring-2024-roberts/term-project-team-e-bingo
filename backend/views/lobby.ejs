@@ -26,6 +26,7 @@
 						<div class="inputBx">
 							<input class="inp" type="text" placeholder="Create a room">
 							
+							
 							<button alt="Create" class="btn buttonB">
 								<span style="--i: 2">C</span>
 								<span style="--i: 3">r</span>
@@ -35,6 +36,7 @@
 								<span style="--i: 7">e</span>
 
 							</button>
+							
 						</div>
 
 						<table border="1" class="tb">
@@ -59,6 +61,10 @@
 					</form>
 				</div>
 			</div>
+
+<!-- bootstrap form -->
+
+
 			
 
 			<div>
@@ -73,60 +79,64 @@
 
 
 			<!-- pop up chat -->
+			<!-- <button class="open-btn" onclick="openChatWindow"><i class="fa-solid fa-comment"></i>Chat</button>
+			<div class="chat-popup" id="chat-form-container">
+				<form action="#" class="form-container">
+					<div class="chat-window-head">
+						<h4><i class="fa-solid fa-comment"></i>Chat</h4>
+						<span class="clost-btn" onclick="CloseChatWindow()">
+							<i class="fa-solid fa-business-time"></i>
+						</span>
+					</div>
+					<div class="msg-container">
+						<div class="msg">
+							<p>chat message</p>
+							<span>09:34pm</span>
+						</div>
+					</div>
+					<div class="chat-box-container">
+						<div class="chat-box">
+							<input type="text" placeholder="type your message">
+						</div>
+					</div>
+				</form>
+			</div> -->
 			<div class="popUp">
-			<h1>Chat Popup</h1>
-			<p>CLick on the chat button to start chatting</p>
 		
-			<button class="chat-btn bn">
+			<!-- <button class="chat-btn bn">
 				<i class="fa-solid fa-comment"></i>
-			</button>
+			</button> -->
 
 			<div class="chat-popup">
-				<div class="badge">1</div>
+				<%- include('partials/chat') %>
+				<!-- <button class="submit bn"><i class="fa-solid fa-paper-plane"></i></button> -->
+				
+				<div class="badge"></div>
 				<div class="chat-area">
-					<div class="income-msg">
+					<!-- <div class="income-msg">
 						<img src="img/person.jpg" alt="">
 						<span class="msg">Hi, How can I help you?</span>
-					</div>
+					</div> -->
 				</div>
 				<div class="input-area">
-					<input type="text">
-					<button class="bn" id="emoji-btn">&#128512;</button>
-					<button class="submit bn"><i class="fa-solid fa-paper-plane"></i></button>
+					<!-- <input type="text"> -->
+					<!-- <button class="bn" id="emoji-btn">&#128512;</button> -->
+					<!-- <button class="submit bn"><i class="fa-solid fa-paper-plane"></i></button> -->
 				</div>
 			</div>
 			</div>
 		
 
 		</section>	
-
-		  <script src="/socket.io/socket.io.js"></script>
-		 
-
-		   
-		<script src="script.js"></script>
-		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 		
-		<!-- emoji button -->
-		<!-- npm install @joeattardi/emoji-button -->
+		<script src="/partials/chat.js"></script>
+		  <script src="/socket.io/socket.io.js"></script>
+		 <script>
 
-		<!-- <script src="main.js"></script> -->
-		<!-- emoji picker -->
-		<script src="https://cdn.jsdeliver.net/npm/@joeattardi/emoji-button@3.1.1/dist/index.min.js"></script>
-		<script>
-			const emojiBtn = document.querySelector('#emoji-btn');
-			const picker = new EmojiButton();
-			window.addEventListener('DOMContentLoaded', () =>{
+		 </script>
 
-				picker.on('emoji', emoji => {
-					document.querySelector('input').value += emoji;
-				});
-
-				emojiBtn.addEventListener('click', () =>{
-					picker.togglePicker(emojiBtn);
-				});
-			});
-		</script>
+	
+	
 		
 	</body>
 </html>

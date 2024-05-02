@@ -11,6 +11,9 @@ router.get('/', (req, res) => {
 router.get('/lobby', (req, res) => {
   res.render('lobby');
 });
+router.get('/wait', (req, res) => {
+  res.render('waitRoom');
+});
 
 router.get('/register', (req, res) => {
   res.render('register');
