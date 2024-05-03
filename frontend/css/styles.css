@@ -15,9 +15,10 @@ h1{
     color: #fff;
 }
 
-p {
+/* p {
     line-height: 1.5;
-}
+
+} */
 
 nav {
     background-color: black;
@@ -102,17 +103,21 @@ nav ul li a:hover {
     height: auto;
 }
 
-
+/* 
 footer {
     width: 100%;
-    background-color: black;
+    background-color: rgb(182, 167, 167);
     color: white;
     text-align: center;
     padding: 10px;
-}
+} */
+
 
 
 .chat-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background: linear-gradient(to top,rgba(10, 101, 181, 0.5), rgb(5, 0, 138));
     color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -120,6 +125,12 @@ footer {
     height: 300px;
     padding: 0 20px;
     overflow-y: scroll;
+
+}
+
+.chat-area input[type="text"] {
+    width: 90%;
+    
 }
 
 .chat-form {

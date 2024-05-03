@@ -14,6 +14,9 @@ router.get('/lobby', (req, res) => {
 router.get('/wait', (req, res) => {
   res.render('waitRoom');
 });
+router.get('/flip', (req, res) => {
+  res.render('flip');
+});
 
 router.get('/register', (req, res) => {
   res.render('register');
