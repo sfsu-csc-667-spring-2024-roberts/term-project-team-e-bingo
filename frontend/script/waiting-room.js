@@ -46,16 +46,20 @@ function exitRoom(roomId, userId) {
         window.alert('Host cannot exit the room if there are other players in the room. Please ask other players to exit the room first.');
         return;
     }
-    socket.emit('exit room', { roomId: roomId, userId: userId });
     if (userId === hostId && playerElement.childElementCount === 1) {
         const userResponse = confirm("Do you want to proceed? This will delete the room.");
         if (userResponse) {
+            socket.emit('exit room', { roomId: roomId, userId: userId });
             socket.emit('delete room', { roomId: roomId, userId: userId });
+            window.location.href = '/lobby';
+            return;
         }
         else {
             return;
         }
     }
+    socket.emit('exit room', { roomId: roomId, userId: userId });
+
     window.location.href = '/lobby';
 }
 
