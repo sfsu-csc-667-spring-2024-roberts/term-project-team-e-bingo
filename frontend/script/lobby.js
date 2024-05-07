@@ -1,6 +1,12 @@
 document.getElementById('createRoomBtn').addEventListener('click', function () {
     const roomName = prompt('Enter a room name:');
     if (roomName) {
+        const usernames = Array.from(document.querySelectorAll('#roomsList tr td:nth-child(2)'))
+                                .map(td => td.textContent.trim());
+        if (usernames.includes(user_name)) {
+            window.alert('You have already created a room');
+            return;
+        }
         socket.emit('create room', { roomName: roomName, user: user });
         socket.on('update room', (room) => {
             console.log('Room created:', room);
