@@ -92,8 +92,12 @@ io.on('connection', (socket) => {
   socket.on('starting game', (data) => {
     io.to(data.roomId).emit('game started', { roomId: data.roomId });
   });
+  //data: { room_id: roomId, hostId, session.user.userID }
+  socket.on('generate random number', (data) => {
+    console.log(data.number);
+    io.to(data.roomId).emit('number generated', { number: data.number });
+  });
 });
-
 
 
 app.use('/', homeRouter);

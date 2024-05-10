@@ -12,203 +12,50 @@
     <div id="timer"></div>
     <div id="called-numbers"></div>
     <div id="players">
-        <section>
-            <div class="bingo-card" id="player1">
-                <h2>Player 1</h2>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell1"></div>
-                  <div class="bingo-cell" id="player1-cell2"></div>
-                  <div class="bingo-cell" id="player1-cell3"></div>
-                  <div class="bingo-cell" id="player1-cell4"></div>
-                  <div class="bingo-cell" id="player1-cell5"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell6"></div>
-                  <div class="bingo-cell" id="player1-cell7"></div>
-                  <div class="bingo-cell" id="player1-cell8"></div>
-                  <div class="bingo-cell" id="player1-cell9"></div>
-                  <div class="bingo-cell" id="player1-cell10"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell11"></div>
-                  <div class="bingo-cell" id="player1-cell12"></div>
-                  <div class="bingo-cell" id="player1-cell13"></div>
-                  <div class="bingo-cell" id="player1-cell14"></div>
-                  <div class="bingo-cell" id="player1-cell15"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell16"></div>
-                  <div class="bingo-cell" id="player1-cell17"></div>
-                  <div class="bingo-cell" id="player1-cell18"></div>
-                  <div class="bingo-cell" id="player1-cell19"></div>
-                  <div class="bingo-cell" id="player1-cell20"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell21"></div>
-                  <div class="bingo-cell" id="player1-cell22"></div>
-                  <div class="bingo-cell" id="player1-cell23"></div>
-                  <div class="bingo-cell" id="player1-cell24"></div>
-                  <div class="bingo-cell" id="player1-cell25"></div>
-                </div>
+      <section>
+        <% for (let player of gameInfo.players) { %>
+          <% if (session.user.userId === player.user_id) { %>
+          <div class="bingo-card" id="player<%= player.user_id %>">
+            <h2>Player <%= player.username %></h2>
+            <% for (let col = 0; col < player.card_data.length; col++) { %>
+            <div class="bingo-row">
+              <% for (let row = 0; row < player.card_data.length; row++) { %>
+              <div
+                class="bingo-cell"
+                id="player<%= player.user_id %>-cell<%= row * 5 + col + 1 %>"
+                onclick="markNumber(this)"
+              >
+              <%= player.card_data[row][col] === 0 ? "Free" : player.card_data[row][col] %>
+              </div>
+              <% } %>
             </div>
-            <div class="bingo-card" id="player2">
-                <h2>Player 2</h2>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell1"></div>
-                  <div class="bingo-cell" id="player1-cell2"></div>
-                  <div class="bingo-cell" id="player1-cell3"></div>
-                  <div class="bingo-cell" id="player1-cell4"></div>
-                  <div class="bingo-cell" id="player1-cell5"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell6"></div>
-                  <div class="bingo-cell" id="player1-cell7"></div>
-                  <div class="bingo-cell" id="player1-cell8"></div>
-                  <div class="bingo-cell" id="player1-cell9"></div>
-                  <div class="bingo-cell" id="player1-cell10"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell11"></div>
-                  <div class="bingo-cell" id="player1-cell12"></div>
-                  <div class="bingo-cell" id="player1-cell13"></div>
-                  <div class="bingo-cell" id="player1-cell14"></div>
-                  <div class="bingo-cell" id="player1-cell15"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell16"></div>
-                  <div class="bingo-cell" id="player1-cell17"></div>
-                  <div class="bingo-cell" id="player1-cell18"></div>
-                  <div class="bingo-cell" id="player1-cell19"></div>
-                  <div class="bingo-cell" id="player1-cell20"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell21"></div>
-                  <div class="bingo-cell" id="player1-cell22"></div>
-                  <div class="bingo-cell" id="player1-cell23"></div>
-                  <div class="bingo-cell" id="player1-cell24"></div>
-                  <div class="bingo-cell" id="player1-cell25"></div>
-                </div>
+            <% } %>
+          </div>
+          <% } else { %>
+          <div class="bingo-card" id="player<%= player.user_id %>">
+            <h2>Player <%= player.username %></h2>
+            <% for (let col = 0; col < player.card_data.length; col++) { %>
+            <div class="bingo-row">
+              <% for (let row = 0; row < player.card_data.length; row++) { %>
+              <div
+                class="bingo-cell"
+                id="player<%= player.user_id %>-cell<%= row * 5 + col + 1 %>"
+              >
+              </div>
+              <% } %>
             </div>
-            <div class="bingo-card" id="player3">
-                <h2>Player 3</h2>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell1"></div>
-                  <div class="bingo-cell" id="player1-cell2"></div>
-                  <div class="bingo-cell" id="player1-cell3"></div>
-                  <div class="bingo-cell" id="player1-cell4"></div>
-                  <div class="bingo-cell" id="player1-cell5"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell6"></div>
-                  <div class="bingo-cell" id="player1-cell7"></div>
-                  <div class="bingo-cell" id="player1-cell8"></div>
-                  <div class="bingo-cell" id="player1-cell9"></div>
-                  <div class="bingo-cell" id="player1-cell10"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell11"></div>
-                  <div class="bingo-cell" id="player1-cell12"></div>
-                  <div class="bingo-cell" id="player1-cell13"></div>
-                  <div class="bingo-cell" id="player1-cell14"></div>
-                  <div class="bingo-cell" id="player1-cell15"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell16"></div>
-                  <div class="bingo-cell" id="player1-cell17"></div>
-                  <div class="bingo-cell" id="player1-cell18"></div>
-                  <div class="bingo-cell" id="player1-cell19"></div>
-                  <div class="bingo-cell" id="player1-cell20"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell21"></div>
-                  <div class="bingo-cell" id="player1-cell22"></div>
-                  <div class="bingo-cell" id="player1-cell23"></div>
-                  <div class="bingo-cell" id="player1-cell24"></div>
-                  <div class="bingo-cell" id="player1-cell25"></div>
-                </div>
-            </div>
-            <div class="bingo-card" id="player4">
-                <h2>Player 4</h2>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell1"></div>
-                  <div class="bingo-cell" id="player1-cell2"></div>
-                  <div class="bingo-cell" id="player1-cell3"></div>
-                  <div class="bingo-cell" id="player1-cell4"></div>
-                  <div class="bingo-cell" id="player1-cell5"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell6"></div>
-                  <div class="bingo-cell" id="player1-cell7"></div>
-                  <div class="bingo-cell" id="player1-cell8"></div>
-                  <div class="bingo-cell" id="player1-cell9"></div>
-                  <div class="bingo-cell" id="player1-cell10"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell11"></div>
-                  <div class="bingo-cell" id="player1-cell12"></div>
-                  <div class="bingo-cell" id="player1-cell13"></div>
-                  <div class="bingo-cell" id="player1-cell14"></div>
-                  <div class="bingo-cell" id="player1-cell15"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell16"></div>
-                  <div class="bingo-cell" id="player1-cell17"></div>
-                  <div class="bingo-cell" id="player1-cell18"></div>
-                  <div class="bingo-cell" id="player1-cell19"></div>
-                  <div class="bingo-cell" id="player1-cell20"></div>
-                </div>
-                <div class="bingo-row">
-                  <div class="bingo-cell" id="player1-cell21"></div>
-                  <div class="bingo-cell" id="player1-cell22"></div>
-                  <div class="bingo-cell" id="player1-cell23"></div>
-                  <div class="bingo-cell" id="player1-cell24"></div>
-                  <div class="bingo-cell" id="player1-cell25"></div>
-                </div>
-            </div>
-        </section>
+            <% } %>
+          </div>
+          <% } %>
+        <% } %>
+      </section>
     </div>
+    <%- include('partials/chat', { session: session, roomId: gameInfo.room_id }) %>
+    <script>
+        const userId = '<%= session.user.userId%>';
+        const hostId = '<%= gameInfo.host_id %>';
+    </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/script/game.js"></script>
   </body>
 </html>
-
-
-
-<!-- <div class="bingo-card" id="player1">
-    <h2>Player 1</h2>
-    <div class="bingo-row">
-      <div class="bingo-cell" id="player1-cell1"></div>
-      <div class="bingo-cell" id="player1-cell6"></div>
-      <div class="bingo-cell" id="player1-cell11"></div>
-      <div class="bingo-cell" id="player1-cell16"></div>
-      <div class="bingo-cell" id="player1-cell21"></div>
-    </div>
-    <div class="bingo-row">
-      <div class="bingo-cell" id="player1-cell2"></div>
-      <div class="bingo-cell" id="player1-cell7"></div>
-      <div class="bingo-cell" id="player1-cell12"></div>
-      <div class="bingo-cell" id="player1-cell17"></div>
-      <div class="bingo-cell" id="player1-cell22"></div>
-    </div>
-    <div class="bingo-row">
-      <div class="bingo-cell" id="player1-cell3"></div>
-      <div class="bingo-cell" id="player1-cell8"></div>
-      <div class="bingo-cell" id="player1-cell13"></div>
-      <div class="bingo-cell" id="player1-cell18"></div>
-      <div class="bingo-cell" id="player1-cell23"></div>
-    </div>
-    <div class="bingo-row">
-      <div class="bingo-cell" id="player1-cell4"></div>
-      <div class="bingo-cell" id="player1-cell9"></div>
-      <div class="bingo-cell" id="player1-cell14"></div>
-      <div class="bingo-cell" id="player1-cell19"></div>
-      <div class="bingo-cell" id="player1-cell24"></div>
-    </div>
-    <div class="bingo-row">
-      <div class="bingo-cell" id="player1-cell5"></div>
-      <div class="bingo-cell" id="player1-cell10"></div>
-      <div class="bingo-cell" id="player1-cell15"></div>
-      <div class="bingo-cell" id="player1-cell20"></div>
-      <div class="bingo-cell" id="player1-cell25"></div>
-    </div>
-  </div> -->

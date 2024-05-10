@@ -150,10 +150,33 @@ router.get('/game', async (req, res) => {
 
 router.get('/game/:roomId', async (req, res) => {
   const roomId = req.params.roomId;
+
   try {
-    res.send(`Game room ${roomId}`)
+    const rawData = await db.getGameInfo(parseInt(roomId));
+    //const getDrawnBalls = await db.getDrawnBalls(roomId);
+    const gameInfo = {
+        room_id: rawData[0].room_id,
+        host_id: rawData[0].host_id,
+        players: rawData.map(player => ({
+            user_id: player.user_id,
+            username: player.username,
+            card_id: player.card_id,
+            card_data: player.card_data,
+        }))
+
+        //drawn_balls: getDrawnBalls
+    };
+
+    const host = rawData.find(player => player.host_id === player.user_id);
+    res.render('game', {
+      gameInfo: gameInfo,
+      players: gameInfo.players,
+      host: host,
+      user: req.session.user, // Assuming session management
+      session: req.session
+    });
   } catch (error) {
-    console.error('Failed to load game room', error);
+    console.error('Failed to load room details:', error);
     res.status(500).send('Internal Server Error');
   }
 });
