@@ -1,3 +1,14 @@
+const createElement = (tag, attributes, id, content) => {
+	const element = document.createElement(tag)
+	for (const key in attributes) {
+		element.setAttribute(key, attributes[key])
+	}
+	if (id) element.id = id
+	if (content) element.textContent = content
+	return element
+}
+
+
 function generateRandomNumber() {
 	return Math.floor(Math.random() * 75) + 1
 }
@@ -7,11 +18,16 @@ function updateBingoNumber(number) {
 	bossCell.textContent = data.number
 }
 
+const calledNumbers = document.getElementById('called-numbers')
+const currentNumber = document.getElementById('boss')
+
+
 socket.on('number generated', function (data) {
 	console.log('socket.on: ' + data)
-	const calledNumbersDiv = document.getElementById('called-numbers')
-	calledNumbersDiv.innerHTML += data.number + ', '
-	document.getElementById('boss').innerText = 'Boss: ' + data.number
+	
+	calledNumbers.append( createElement('div', {class:'ball'}, null, data.number) )
+	calledNumbers.scrollLeft = calledNumbers.scrollWidth;
+	document.getElementById('boss').innerText = data.number
 })
 
 function callNumber() {

@@ -1,6 +1,53 @@
 body {
-    background-image: url('/assets/images/hom.gif');
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.hero-section {
+    background-image: url('/assets/images/welcome.webp');
+    color: white;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size:  100% 100%;
-    background-attachment: fixed;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    margin: 0 0 20px;
+}
+
+.cta-button-rg {
+    background-color: #5082ff69;
+    color: white;
+    margin: 20px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta-button-rg:hover {
+    background-color: rgb(130, 126, 235);
+}
+
+.cta-button-signin {
+    text-decoration: none;
+    color: white;
+}
+
+.cta-button-signin:hover {
+    text-decoration: underline;
+}
+
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+    height: 300px;
+}
+
+.lobby-section {
+    padding: 50px 20px;
+    height: auto;
 }

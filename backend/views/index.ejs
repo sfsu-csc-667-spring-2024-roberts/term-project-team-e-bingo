@@ -19,13 +19,18 @@
 		<section id="home" class="hero-section">
 			<h1>Welcome to Bingo!!!</h1>
 			<p>We're excited to have you play with us. Let's see if today is your lucky day. Good luck and have fun!</p>
-			<a href="/register" class="cta-button-rg">Register</a>
-			<a href="/login" class="cta-button-signin">Sign In</a>
+			<% if (!locals.session.user) { %>
+				<a href="/register" class="cta-button-rg">Register</a>
+				<a href="/login" class="cta-button-signin">Sign In</a>	
+			<% } %>
 		</section>
 
 		<section id="lobby" class="lobby-section">
 			<h2>Your Recent Activities</h2>
-			<p>Please login to see your activities</p>
+			<% if (locals.session.user) { %>
+				<p>Welcome back, <%= locals.session.user.username %></p>	
+			<% } %>
+			
 		</section>
 
 		<section id="about" class="about-section">

@@ -17,13 +17,17 @@
 		<%- include('partials/menu') %>
 
 		<h1>Bingo Game</h1>
-		<div id="boss"></div>
+		<div class="container-boss">
+			<div id="boss" class="dynamic-ball"></div>
+		</div>
+		
 		<div id="timer"></div>
-		<div id="called-numbers"></div>
+		<div id="called-numbers">
+			
+		</div>
 		<div id="players">
 			<section>
 				<% for (let player of gameInfo.players) { %> <% if (session.user.userId === player.user_id) { %>
-				<button class="startButton" id="bingoButton" onclick="BINGO('<%= player.user_id %>')">Bingo</button>
 				<div class="bingo-card" id="player<%= player.user_id %>">
 					<h2>Player <%= player.username %></h2>
 					<% for (let col = 0; col < player.card_data.length; col++) { %>
@@ -37,8 +41,8 @@
 					<% } %>
 				</div>
 				<% } else { %>
-				<div class="bingo-card" id="player<%= player.user_id %>">
-					<h2>Player <%= player.username %></h2>
+				<div class="bingo-card small" id="player<%= player.user_id %>">
+					<h3><%= player.username %></h3>
 					<% for (let col = 0; col < player.card_data.length; col++) { %>
 					<div class="bingo-row">
 						<% for (let row = 0; row < player.card_data.length; row++) { %>
@@ -47,8 +51,31 @@
 					</div>
 					<% } %>
 				</div>
+				<div class="bingo-card small" id="player<%= player.user_id %>">
+					<h3><%= player.username %></h3>
+					<% for (let col = 0; col < player.card_data.length; col++) { %>
+					<div class="bingo-row">
+						<% for (let row = 0; row < player.card_data.length; row++) { %>
+						<div class="bingo-cell" id="<%= player.user_id + '-' + row + '-' + col + '-' + player.card_data[row][col] %>"></div>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+				<div class="bingo-card small" id="player<%= player.user_id %>">
+					<h3><%= player.username %></h3>
+					<% for (let col = 0; col < player.card_data.length; col++) { %>
+					<div class="bingo-row">
+						<% for (let row = 0; row < player.card_data.length; row++) { %>
+						<div class="bingo-cell" id="<%= player.user_id + '-' + row + '-' + col + '-' + player.card_data[row][col] %>"></div>
+						<% } %>
+					</div>
+					<% } %>
+				</div>
+				
+				
 				<% } %> <% } %>
 			</section>
+			<button class="startButton" id="bingoButton" onclick="BINGO('<%= session.user.userId %>')">Bingo</button>
 		</div>
 
 		<%- include('partials/chat', { session: session, roomId: gameInfo.room_id }) %>

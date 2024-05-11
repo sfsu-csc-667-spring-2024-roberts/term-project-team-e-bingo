@@ -1,63 +1,171 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+	font-family: Arial, sans-serif;
+	text-align: center;
 }
 h1 {
-  color: #333;
-}
-.bingo-card {
-  display: inline-block;
-  margin: 20px;
-  border: 2px solid #333;
-  padding: 10px;
-  border-radius: 10px;
-  width: 200px;
-}
-.bingo-number {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: rgb(255, 0, 0);
+	color: #333;
 }
 
+#timer {
+	font-family: 'Courier New', monospace;
+	position: fixed;
+	right: 0;
+	top: 200px;
+	font-size: 2em;
+	padding: 10px;
+	background-color: #f0f0f0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	display: inline-block;
+	width: auto;
+}
+
+#called-numbers {
+	display: flex;
+	overflow-x: auto;
+	width: 300px;
+	margin: 0 auto;
+}
+
+.ball {
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+	font-size: 1.2em;
+}
+
+.container-boss {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.dynamic-ball {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: red;
+	color: white;
+	font-size: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: colorChange 20s infinite alternate;
+}
+
+@keyframes colorChange {
+	0% {
+		background-color: red;
+	}
+	10% {
+		background-color: orange;
+	}
+	20% {
+		background-color: yellow;
+	}
+	30% {
+		background-color: green;
+	}
+	40% {
+		background-color: blue;
+	}
+	50% {
+		background-color: indigo;
+	}
+	60% {
+		background-color: violet;
+	}
+	70% {
+		background-color: purple;
+	}
+	80% {
+		background-color: pink;
+	}
+	90% {
+		background-color: cyan;
+	}
+	100% {
+		background-color: red;
+	}
+}
+
+section {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  width: 100%;
+}
+
+
+.bingo-card {
+	display: inline-block;
+	margin: 20px;
+	border: 2px solid #333;
+	padding: 10px;
+	border-radius: 10px;
+	width: 200px;
+}
+
+.bingo-card.small {
+  width: 150px;
+  border: none;
+}
+
+.bingo-number {
+	font-size: 24px;
+	margin-bottom: 10px;
+	color: rgb(255, 0, 0);
+}
 
 .bingo-row {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 .bingo-cell {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 .free-space {
-  background-color: lightgray;
+	background-color: lightgray;
 }
 #called-numbers {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .marked {
-  background-color: blue;
+	background-color: rgb(57, 57, 255);
+	color: aliceblue;
 }
 
+#players {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
 
 .startButton {
-
-  position: fixed;
-  left: 35%; 
-  bottom: 25%;
-
-	background-color: #0c0d0c; /* Green */
+	background-color: #0c0d0c;
 	border: none;
 	color: white;
-	padding: 30px 60px;
+	padding: 20px 40px;
 	text-align: center;
 	font-size: 16px;
-	/* margin: 4px 2px; */
 	border-radius: 10px;
 }
 
