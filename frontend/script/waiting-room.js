@@ -39,7 +39,7 @@ function markReady(roomId, userId) {
     socket.emit('player ready', { roomId: roomId, userId: userId });
 }
 
-function exitRoom(roomId, userId) {
+async function exitRoom(roomId, userId) {
     console.log("clicked exit")
     const playerElement = document.getElementById(`players`);
     if (userId === hostId && playerElement.childElementCount > 1) {
@@ -49,9 +49,22 @@ function exitRoom(roomId, userId) {
     if (userId === hostId && playerElement.childElementCount === 1) {
         const userResponse = confirm("Do you want to proceed? This will delete the room.");
         if (userResponse) {
-            socket.emit('exit room', { roomId: roomId, userId: userId });
-            socket.emit('delete room', { roomId: roomId, userId: userId });
-            window.location.href = '/lobby';
+            const response = await fetch(`/host_exit/${roomId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: parseInt(userId),
+                    roomId: parseInt(roomId),
+                }),
+            });
+            if (response.ok) {
+                socket.emit('delete room', { roomId: roomId, userId: userId });
+                window.location.href = '/lobby';
+            } else {
+                window.alert('Failed to delete room:', data.message); // Display server error message if available
+            }
             return;
         }
         else {

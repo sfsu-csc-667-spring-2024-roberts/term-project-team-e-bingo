@@ -196,6 +196,20 @@ router.post('/starting_game/:roomId', async (req: Request, res: Response) => {
   }*/
 });
 
+router.post('/host_exit/:roomId', async (req: Request, res: Response) => {
+  const { userId, roomId } = req.body;
+  if(userId && roomId){
+    await db.removePlayerFromRoom(userId, roomId);
+    await db.deletePlayerStatus(userId, roomId);
+    await db.deleteRoom(roomId);
+  res.status(200).json({ message: 'Room Deleted' });
+  }else{
+    res.status(400).json({ message: 'Invalid user or room ID' });
+  
+  }
+
+});
+
 
 
 
