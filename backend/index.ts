@@ -75,8 +75,6 @@ io.on('connection', (socket) => {
 
   socket.on('delete room', async (data) => {
     const { roomId, userId } = data;
-    await db.deleteRoom(roomId);
-    await db.deletePlayerStatus(userId, roomId);
     io.to('lobby').emit('room deleted', { roomId:roomId, userId: userId }); // Notify others in the room
     // Update database or manage internal state as necessary
   });
