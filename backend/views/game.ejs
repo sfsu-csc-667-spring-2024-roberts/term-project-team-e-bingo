@@ -51,28 +51,6 @@
 					</div>
 					<% } %>
 				</div>
-				<div class="bingo-card small" id="player<%= player.user_id %>">
-					<h3><%= player.username %></h3>
-					<% for (let col = 0; col < player.card_data.length; col++) { %>
-					<div class="bingo-row">
-						<% for (let row = 0; row < player.card_data.length; row++) { %>
-						<div class="bingo-cell" id="<%= player.user_id + '-' + row + '-' + col + '-' + player.card_data[row][col] %>"></div>
-						<% } %>
-					</div>
-					<% } %>
-				</div>
-				<div class="bingo-card small" id="player<%= player.user_id %>">
-					<h3><%= player.username %></h3>
-					<% for (let col = 0; col < player.card_data.length; col++) { %>
-					<div class="bingo-row">
-						<% for (let row = 0; row < player.card_data.length; row++) { %>
-						<div class="bingo-cell" id="<%= player.user_id + '-' + row + '-' + col + '-' + player.card_data[row][col] %>"></div>
-						<% } %>
-					</div>
-					<% } %>
-				</div>
-				
-				
 				<% } %> <% } %>
 			</section>
 			<button class="startButton" id="bingoButton" onclick="BINGO('<%= session.user.userId %>')">Bingo</button>
