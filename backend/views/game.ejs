@@ -15,7 +15,7 @@
 <body>
 	<%- include('partials/menu') %>
 
-		<h1>Bingo Game</h1>
+		<!-- <h1>Bingo Game</h1> -->
 		<div class="container-boss">
 			<div id="boss" class="dynamic-ball"></div>
 		</div>
@@ -38,8 +38,7 @@
 					<% if (session.user.userId===player.user_id) { %>
 						
 						<div class="bingo-card" id="player<%= player.user_id %>">
-							<h2>Player <%= player.username %>
-							</h2>
+							<h2> <%= player.username %> </h2>
 							<% for (let row=0; row < player.card_data.length; row++) { %>
 								<div class="bingo-row">
 									<% for (let col=0; col < player.card_data[row].length; col++) { %>

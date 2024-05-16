@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #232c33;
+    background-color: #45615d;
     justify-content: center;
     align-items: center;
     margin: 0;
@@ -37,16 +37,16 @@ body{
 }
 
 .flip-form-front{
-    background: linear-gradient(180deg, #232c33 40%, #153a56);
-    color: #2980b9;
+    background: linear-gradient(180deg, #263f3c 40%, #153a56);
+    color: #0e2820;
     border-radius: 10px;
-    box-shadow: 0 0 3.2px #fff,0 0 3.2px #fff, 0 0 20.8px #2980b9, inset 0 0 20.8px #2980b9;
+    box-shadow: 0 0 3.2px #fff,0 0 3.2px #fff, 0 0 20.8px #29b9ad, inset 0 0 20.8px #2980b9;
 
 }
 
 .flip-form-back{
     background: linear-gradient(180deg, #232c33 40%, #153a56);
-    color: #2980b9;
+    color: #0e2820;
     border-radius: 10px;
     box-shadow: 0 0 3.2px #fff,0 0 3.2px #fff, 0 0 20.8px #2980b9, inset 0 0 20.8px #2980b9;
     transform: rotateY(180deg);

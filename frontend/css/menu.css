@@ -8,7 +8,6 @@ body{
  
 /* menu cubes */
 .menu-cubes{
-
     margin: 0;
     padding: 0;
     /* position: absolute; */
@@ -226,6 +225,10 @@ p{
     justify-content: center;
 } */
 
+button.button{
+    background-color: pink;
+}
+
 .inp{
     width: auto;
     border: 2px solid #090303;
@@ -259,21 +262,23 @@ footer {
     max-width: 700px;
     width: 300px;
     height: 200px;
-    background: linear-gradient(to top, rgb(255, 187, 0), rgb(255, 119, 0));
+    background: linear-gradient(to top, rgb(212, 184, 107), rgb(232, 147, 73));
     border-radius: 10px;
     animation: slide ease 0.5s;
 }
 
 .chat-area {
-    color: rgb(255, 255, 255);
+    color: black;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     font-size: 12px;
 }
 #messages > p {
-    font-size: 14px;
-    margin: 15px;
+    font-size: 15px;
+    /* margin: 15px; */
+    width: auto;
+    margin: 10px;
 }
 
 .chat-form {

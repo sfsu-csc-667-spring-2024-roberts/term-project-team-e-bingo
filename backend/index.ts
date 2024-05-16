@@ -9,7 +9,6 @@ import { createServer } from 'node:http'
 import { sessionData, requiredLoginAllSites, loginRequest } from './middleware/auth'
 import { logger } from './middleware/logger'
 import * as db from './database/index'
-
 import * as card from './middleware/card'
 
 const app = express()

@@ -16,8 +16,9 @@
 	<body>
 		<%- include('partials/menu') %>
 
+
 		<section id="home" class="hero-section">
-			<h1>Welcome to Bingo!!!</h1>
+			<h1>Welcome John!</h1>
 			<p>We're excited to have you play with us. Let's see if today is your lucky day. Good luck and have fun!</p>
 			<% if (!locals.session.user) { %>
 				<a href="/register" class="cta-button-rg">Register</a>
@@ -25,13 +26,13 @@
 			<% } %>
 		</section>
 
-		<section id="lobby" class="lobby-section">
+		<!-- <section id="lobby" class="lobby-section">
 			<h2>Your Recent Activities</h2>
 			<% if (locals.session.user) { %>
 				<p>Welcome back, <%= locals.session.user.username %></p>	
 			<% } %>
 			
-		</section>
+		</section> -->
 
 		<section id="about" class="about-section">
 			<h2>About Us</h2>

@@ -1,15 +1,24 @@
 body {
 	padding: 0;
 	margin: 0;
+	background-color: #45615d;
+	
 }
 
 .hero-section {
-	background-image: url('/assets/images/welcome.webp');
-	color: white;
+	
+	/* background-image: url('/assets/images/welcome.webp'); */
+	color: rgb(18, 16, 16);
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-repeat:no-repeat;
+	background-position: center;
 	padding: 100px 20px;
 	text-align: center;
+	font-size: 30px;
+}
+
+.hero-section h1{
+	font-size: 30px;
 }
 
 .hero-section h1 {
