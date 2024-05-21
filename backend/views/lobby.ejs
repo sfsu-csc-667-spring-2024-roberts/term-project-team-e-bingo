@@ -5,35 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bingo Game</title>
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/lobby.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <%- include('partials/navigation') %>
-
+    <%- include('partials/menu') %>
+    <h1>Lobby</h1>
+    <h2 style="text-align: center;">To play games, create a room or join!</h2>
     <section id="lobby" class="lobby-section">
-        <h2>Chat area</h2>
-        <%- include('partials/chat', { session: session, roomId: 'lobby' }) %>
-
-        <button id="createRoomBtn">Create Game Room</button>
-        <h3>Game Rooms</h3>
-        <table id="roomsTable">
+        <div class="lobbyBox"> 
+        <div class="inputBx">
+            <input class="inp" type="text" id="roomNameInput" placeholder="Create a room" required>
+            <button alt="Create" class="btn buttonB" id="createRoomBtn">
+                <span style="--i: 2">C</span>
+                <span style="--i: 3">r</span>
+                <span style="--i: 4">e</span>
+                <span style="--i: 5">a</span>
+                <span style="--i: 6">t</span>
+                <span style="--i: 7">e</span>
+            </button>
+        </div>
+        
+        <table id="roomsTable" class="tb">
             <thead>
                 <tr>
                     <th>Room Name</th>
                     <th>Host</th>
-                    <th></th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody id="roomsList">
                 <!-- Rooms will be added here dynamically -->
             </tbody>
         </table>
+        </div>
     </section>
 
-    <script src="/socket.io/socket.io.js"></script>
     <script>
         const user_name = '<%= session.user.username %>';
     </script>
+    <%- include('partials/chat', { session: session, roomId: 'lobby' }) %>
     <script src="/script/lobby.js"></script>
 </body>
 </html>

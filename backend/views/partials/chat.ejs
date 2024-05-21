@@ -1,32 +1,52 @@
-<div id="messages" class="chat-area"></div>
-<form class="chat-form" id="chatForm" action=""><input id="input" autocomplete="off" placeholder="Chat"/></form>
+<div class="chat-container" id="chat-container">
+    <div id="messages" class="chat-area">
+        <!-- Chat messages will be displayed here -->
+    </div>
+    <form class="chat-form" id="chatForm">
+        <input id="input" autocomplete="organization" placeholder="Chat" />
+    </form>
+</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-	const socket = io();
+    const socket = io();
 
-	const form = document.getElementById('chatForm');
-	const input = document.getElementById('input');
-	const messages = document.getElementById('messages');
-	const user = "<%= session.user ? session.user['username'] : 'Guest' %>";
-	const roomId = "<%= roomId %>";  // This assumes you pass `roomId` when rendering the EJS
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+    const chatButton = document.getElementById('chatButton');
+    const chatArea = document.getElementById('chat-container');
+    
+    const user = "<%= session.user ? session.user['username'] : 'Guest' %>";
+    const roomId = '<%= locals.roomId %>'; // This assumes you pass `roomId` when rendering the EJS
 
-	socket.emit('join room', roomId);  // Joining a specific room
+    socket.emit('join room', roomId); // Joining a specific room
 
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
-		if (input.value) {
-			socket.emit('chat message', { room: roomId, user: user, message: input.value });
-			input.value = '';
-			input.focus();
-		}
-	});
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (input.value) {
+            socket.emit('chat message', { room: roomId, user: user, message: input.value });
+            input.value = '';
+            input.focus();
+        }
+    });
 
-	socket.on('chat message', (msg) => {
-		if (msg.room === roomId) {
-			const item = document.createElement('p');
-			item.textContent = msg.user + ": " + msg.message;
-			messages.appendChild(item);
-		}
-	});
+    socket.on('chat message', (msg) => {
+        if (msg.room === roomId) {
+            const item = document.createElement('p');
+            item.textContent = msg.user + ': ' + msg.message;
+            messages.appendChild(item);
+            chatArea.classList.add('show');
+            scrollToBottom();
+        }
+    });
+
+    chatButton.onclick = _ => {
+        chatArea.classList.toggle('show');
+        input.focus();
+    };
+
+    function scrollToBottom() {
+        messages.scrollTop = messages.scrollHeight;
+    }
 </script>

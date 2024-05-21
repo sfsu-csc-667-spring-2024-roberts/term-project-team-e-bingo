@@ -32,6 +32,56 @@ function generateCard(): Card {
     return numbers;
 }
 
+function checkForWin(card: Card, calledNumbers: number[]): boolean {
+    // Check horizontal lines
+    for (let i = 0; i < 5; i++) {
+        if (card[i].every(num => calledNumbers.includes(num) || num === 0)) {
+            return true;
+        }
+    }
+
+    // Check vertical lines
+    for (let j = 0; j < 5; j++) {
+        if (card.every(row => calledNumbers.includes(row[j]) || row[j] === 0)) {
+            return true;
+        }
+    }
+
+    // Check diagonal (top-left to bottom-right)
+    let diagonalWin1 = true;
+    for (let i = 0; i < 5; i++) {
+        if (!calledNumbers.includes(card[i][i]) && card[i][i] !== 0) {
+            diagonalWin1 = false;
+            break;
+        }
+    }
+    if (diagonalWin1) return true;
+
+    // Check diagonal (top-right to bottom-left)
+    let diagonalWin2 = true;
+    for (let i = 0; i < 5; i++) {
+        if (!calledNumbers.includes(card[i][4 - i]) && card[i][4 - i] !== 0) {
+            diagonalWin2 = false;
+            break;
+        }
+    }
+    if (diagonalWin2) return true;
+
+    return false;
+}
+
+const generateDistinctNumbers = (count: number): number[] => {
+    const numbers = Array.from({ length: count }, (_, i) => i + 1);
+    for (let i = numbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+    return numbers;
+};
+
 export {
     generateCard,
+    checkForWin,
+    generateDistinctNumbers
+    
 };

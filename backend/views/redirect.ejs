@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="/css/menu.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+    <%- include('partials/menu') %>
+    <p>Redirecting to lobby in&nbsp;<span id="countdown">9</span>&nbsp; seconds...</p>
+    <h1>Your Previous Joined Rooms</h1>
+    <ul class="room-list">
+        
+        <a class="room-item" href="/lobby">
+            <span class="room-header">Lobby</span>
+            <span>Go to Lobby</span>
+        </a>
+
+        <% rooms.forEach(room => { %>
+
+            <% if (room.status === false) { %>
+                <a class="room-item" href="/waiting/<%= room.room_id %>">
+                    <span class="room-header">Waiting Room</span>
+                    <span>Go to Waiting Room "<%= room.room_name %>"</span>
+                </a>
+            <% } else { %>
+                <a class="room-item" href="/game/<%= room.room_id %>">
+                    <span class="room-header">Game Room</span>
+                    <span>Go to Game Room "<%= room.room_name %>"</span>
+                </a>
+            <% } %>
+            
+        <% }) %>
+    </ul>
+    <%- include('partials/chat', { session: session, roomId: 'lobby' }) %>
+
+</body>
+</html>
+<script>
+    let countdown = 9;
+    function updateCountdown() {
+      document.getElementById('countdown').innerText = countdown;
+      countdown--;
+      if (countdown < 0) {
+        window.location.href = '/lobby';
+      } else {
+        setTimeout(updateCountdown, 1000);
+      }
+    }
+    window.onload = updateCountdown;
+  </script>

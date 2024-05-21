@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waiting Room - <%= roomDetails.room_name %></title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-</head>
-<body>
-    <%- include('partials/navigation') %>
-    <h1>Waiting Room</h1>
-    <h2>Room: <%= roomDetails.room_name %>, Hosted by <%= host.username %></h2>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Waiting Room - <%= roomDetails.room_name %></title>
+		<link rel="stylesheet" href="/css/menu.css" />
+		<link rel="stylesheet" href="/css/wait.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+	</head>
+	<body>
+		<%- include('partials/menu') %>
+		<h1>Waiting Room</h1>
+		<h2>Room: <%= roomDetails.room_name %>, Hosted by <%= host.username %></h2>
 
-    <div id="players">
-        <% players.forEach(function(player) { %>
-            <div class="player" id="player-<%= player.user_id %>">
-                <p>
-                    <span id="username-<%= player.user_id %>"><%= player.username %></span> - 
-                    <span id="status-<%= player.user_id %>"><%= player.status ? 'Ready' : 'Not Ready' %></span>
-                    <% if (player.username === session.user.username) { %>
-                    <button id="readyButton-<%= player.user_id %>" onclick="markReady('<%= roomDetails.room_id %>', '<%= player.user_id %>')">Ready</button>
-                    <button onclick="exitRoom('<%= roomDetails.room_id %>', '<%= player.user_id %>')">Exit</button>  
-                <% } %>
-                <% if (roomDetails.host_id === session.user.userId && player.user_id !== session.user.userId) { %>
-                    <button onclick="kick('<%= roomDetails.room_id %>', '<%= player.user_id %>')">kick</button>
-                <% } %>
-                </p>
-            </div>
-        <% }); %>
-    </div>
-    <% if (roomDetails.host_id === session.user.userId) { %>
-        <button id="startGame" onclick="startGame()">Start Game</button>
-    <% }; %>
-    <%- include('partials/chat', { session: session, roomId: roomDetails.room_id }) %>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const hostId = "<%= roomDetails.host_id %>";
-        const sessionUsername = "<%= session.user.username %>";
-        const sessionUserId = "<%= session.user.userId %>";
-    </script>
-    <script src="/script/waiting-room.js"></script>
+		<div class="card-container" id="players">
+			<% players.forEach(function(player) { %>
+			<div class="card" id="player-<%= player.user_id %>">
+				<i class="fa-solid fa-face-smile"></i>
 
-</body>
+				<div class="card-content">
+					<p class="name" id="username-<%= player.user_id %>"><%= (player.username).toUpperCase() %></p>
+				</div>
+
+				<span class="userStatus" id="status-<%= player.user_id %>"><%= player.status ? 'Ready' : 'Not Ready' %></span>
+
+				<span class="statusColor" id="status-color-<%= player.user_id %>" style="background-color: <%= player.status ? 'rgb(181, 255, 69)' : 'rgb(255, 0, 0)' %>"></span>
+				<% if (player.username === session.user.username) { %>
+
+				<button class="buttons ready" id="readyButton-<%= player.user_id %>" onclick="markReady('<%= roomDetails.room_id %>', '<%= player.user_id %>')">Ready</button>
+
+				<div class="actionBtn">
+					<button class="exitButton" onclick="exitRoom('<%= roomDetails.room_id %>', '<%= player.user_id %>')">Exit</button>
+					<% if (roomDetails.host_id === session.user.userId) { %>
+					<button class="startButton" id="startGame" onclick="startGame()">Start Game</button>
+					<% }; %>
+				</div>
+
+				<% } %> <% if (roomDetails.host_id === session.user.userId && player.user_id !== session.user.userId) { %>
+				<button class="buttons kick" onclick="kick('<%= roomDetails.room_id %>', '<%= player.user_id %>')">Kick</button>
+				<% } %>
+			</div>
+			<% }); %>
+		</div>
+
+		<script>
+			const hostId = '<%= roomDetails.host_id %>'
+			const sessionUsername = '<%= session.user.username %>'
+			const sessionUserId = '<%= session.user.userId %>'
+		</script>
+		<%- include('partials/chat', { session: session, roomId: roomDetails.room_id }) %>
+		<script src="/script/waiting-room.js"></script>
+	</body>
 </html>

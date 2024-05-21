@@ -1,0 +1,165 @@
+
+body{
+    height: auto;
+    margin: 0;
+    padding: 0;
+    /* background-color: rgba(69, 64, 64, 0.927); */
+    /* background-image: url('/assets/images/lobbyBg.gif'); */
+    width: auto;
+    background-repeat: no-repeat;
+    background-size:  100% 100%;
+    background-attachment: fixed;
+}
+
+
+.inputBx {
+    width: auto;
+    display: flex;
+    align-items: center; /* Vertically center items */
+}
+
+.inp{
+    /* padding: 5px; */
+    /* font-size: larger;  */
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+
+    
+    flex: 1; 
+    margin-right: 10px;
+}
+.btn{
+
+    width: auto;
+    margin: 20px;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.join-btn {
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    color: white;
+    width: 100%;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.join-btn.playing {
+    background-color: #777777;
+    color: rgb(0, 255, 64);
+    cursor: not-allowed;
+}
+
+/* .join-btn:hover {
+    background-color: #0056b3;
+} */
+
+/* button create room form */
+.lobbyBox{
+    display: flexbox;
+    width: 450px;
+    align-items: center;
+    justify-content: center;
+    margin: 120px ;
+    position: relative;
+    margin: 0 auto;
+}
+.buttonB{
+    border: none;
+    outline: none;
+    background: rgb(201, 131, 26);
+    box-shadow: 0 7px 0 0 black;
+    border-radius: 12px;
+    height: 40px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    /* letter-spacing: 4px; */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: 0.35s;
+
+}
+button::before{
+    position:absolute;
+    content: attr(alt);
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 4px;
+    opacity: 1;
+}
+button:active{
+    box-shadow: none;
+    transform: translateY(7px);
+    transition: 0.35s;
+}
+button:hover::before{
+    opacity: 0;
+    transform: translateY(100%);
+}
+button span{
+    color: rgb(230, 146, 227);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 2s ease;
+}
+button:hover span{
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+    transition-delay: calc(0.045s * var(--i));
+}
+
+
+.image1{
+    margin-top: 300px ;
+    width: 22%;
+    height: 120px;
+    position: absolute;
+    left: 30px;
+    background-size: contain;
+    /* background: url("/assets/images/spin.gif") no-repeat center/cover; */
+    /* background-size: cover; 
+    background-position: center;  */
+    border: none !important ;
+    outline: none ;
+}
+
+.image2 {
+    margin-top: 300px;
+    width: 250px; 
+    height: 20%; 
+    position: absolute;
+    background-size: contain;
+    right: 15%; 
+    /* right: 10rem; */
+    /* left: 20px; */
+    border: none !important;
+    outline: none;
+}
+
+
+.tb{
+    background-color: #777777;
+    width: 100%;
+    height: 100%;
+}
+
+
+th,td{
+    padding: 10px;
+    align-items: center;
+    justify-self: center;
+    text-align: left;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}

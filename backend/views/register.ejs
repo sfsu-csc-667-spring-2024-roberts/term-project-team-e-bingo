@@ -1,39 +1,91 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Registration</title>
-		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="/css/forms.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+			integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="/css/forms.css" />
+		<link rel="stylesheet" href="/css/menu.css" />
+		<title>Login</title>
 	</head>
 	<body>
-		<%- include('partials/navigation') %>
-		<section>
-			<main class="container">
-				<div class="form-container">
-					<h1>Registration Form</h1>
-					<form class="input-form" action="/register" method="POST">
-						<input class="text-input" type="text" name="username" id="username" placeholder="Username" required />
-						<input class="text-input" type="email" name="email" id="email" placeholder="Email" required />
-						<input class="text-input" type="password" name="password" id="password" placeholder="Password" required />
-						<input class="text-input" type="password" name="confirmPassword" id="cpassword" placeholder="Confirm Password" required />
+		<%- include('partials/menu') %>
+		<div class="flip-form" id="FlipForm">
+			<div class="flip-form-inner">
 
-						<label class="checkbox">
-							<input type="checkbox" id="aoc" name="ageCheck" required />
-							I am 21 years of age or older.
-						</label>
-						<label class="checkbox">
-							<input type="checkbox" id="tos-pr" name="tosCheck" required />
-							I accept <a href="#">Terms of Service</a> and <a href="#">Privacy Rules</a>
-						</label>
-
-						<input type="submit" value="Register" />
-
-						<a class="atag" href="/login"> Already have an account? Log in Here! </a>
+				<div class="flip-form-front">
+					<form action="/register" method="POST">
+						<div class="header">
+							<h2>Sign up</h2>
+						</div>
+						<% if (errorMessage) { %>
+							<div class="error-message">
+								<p><%= errorMessage %></p>
+							</div>
+						<% } %>
+						<div class="inputBox">
+							<input type="text" name="username" required />
+							<label><i class="fa-solid fa-user"></i>Username</label>
+						</div>
+						<div class="inputBox">
+							<input type="text" name="email" required />
+							<label><i class="fa-solid fa-user"></i>Email</label>
+						</div>
+						<div class="inputBox">
+							<input type="password" name="password" required />
+							<label><i class="fa-solid fa-user"></i>Password</label>
+						</div>
+						<div class="inputBox">
+							<input type="password" name="confirmPassword" required />
+							<label><i class="fa-solid fa-lock"></i>Confirm Password</label>
+						</div>
+						<div class="paraText">
+							<input type="submit" value="Register" />
+						</div>
+						<div class="login-link">
+							<p class="paraText">Already have an account? <a href="#" onclick="flipForm()">Log in</a></p>
+						</div>
 					</form>
 				</div>
-			</main>
-		</section>
-        <%- include('partials/footer') %>
+
+				<div class="flip-form-back">
+					<form action="/login" method="POST">
+						<div class="header">
+							<h2>Login</h2>
+						</div>
+						<div class="inputBox">
+							<input class="inputText" type="text" name="username" required />
+							<label><i class="fa-solid fa-user icon"></i>Username</label>
+						</div>
+						<div class="inputBox">
+							<input class="inputText" type="password" name="password" required />
+							<label><i class="fa-solid fa-lock icon"></i>Password</label>
+						</div>
+						<div class="inputBox">
+							<a href="#">Forgot password</a>
+						</div>
+						<div class="paraText">
+							<input type="submit" value="Login" />
+						</div>
+						<div class="signup-link">
+							<p class="paraText">Don't have an account? <a href="#" onclick="flipForm()">Sign up</a></p>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<script>
+			function flipForm() {
+				var form = document.getElementById('FlipForm')
+				form.classList.toggle('flipped')
+			}
+		</script>
 	</body>
-	<script src="/script/forms.js"></script>
 </html>

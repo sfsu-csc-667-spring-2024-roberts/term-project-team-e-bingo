@@ -1,61 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bingo Game</title>
-    <link rel="stylesheet" type="text/css" href="/css/game.css" />
-  </head>
-  <body>
-    <h1>Bingo Game</h1>
-    <div id="boss"></div>
-    <div id="timer"></div>
-    <div id="called-numbers"></div>
-    <div id="players">
-      <section>
-        <% for (let player of gameInfo.players) { %>
-          <% if (session.user.userId === player.user_id) { %>
-          <div class="bingo-card" id="player<%= player.user_id %>">
-            <h2>Player <%= player.username %></h2>
-            <% for (let col = 0; col < player.card_data.length; col++) { %>
-            <div class="bingo-row">
-              <% for (let row = 0; row < player.card_data.length; row++) { %>
-              <div
-                class="bingo-cell"
-                id="player<%= player.user_id %>-cell<%= row * 5 + col + 1 %>"
-                onclick="markNumber(this)"
-              >
-              <%= player.card_data[row][col] === 0 ? "Free" : player.card_data[row][col] %>
-              </div>
-              <% } %>
-            </div>
-            <% } %>
-          </div>
-          <% } else { %>
-          <div class="bingo-card" id="player<%= player.user_id %>">
-            <h2>Player <%= player.username %></h2>
-            <% for (let col = 0; col < player.card_data.length; col++) { %>
-            <div class="bingo-row">
-              <% for (let row = 0; row < player.card_data.length; row++) { %>
-              <div
-                class="bingo-cell"
-                id="player<%= player.user_id %>-cell<%= row * 5 + col + 1 %>"
-              >
-              </div>
-              <% } %>
-            </div>
-            <% } %>
-          </div>
-          <% } %>
-        <% } %>
-      </section>
-    </div>
-    <%- include('partials/chat', { session: session, roomId: gameInfo.room_id }) %>
-    <script>
-        const userId = '<%= session.user.userId%>';
-        const hostId = '<%= gameInfo.host_id %>';
-    </script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/script/game.js"></script>
-  </body>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/css/menu.css" />
+	<link rel="stylesheet" href="/css/game.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Wait Room</title>
+</head>
+
+<body>
+	<%- include('partials/menu') %>
+
+		<h1>Bingo Game</h1>
+		<div class="container-boss">
+			<div id="boss" class="dynamic-ball"></div>
+		</div>
+
+		<div id="timer"></div>
+		<% if (gameInfo.drawn_number && gameInfo.drawn_number.length > 0) { %>
+			<div id="called-numbers">
+				<% for( const number of gameInfo.drawn_number.split(', ') ) { %>
+					<div class="ball"><%= number %></div>
+				<% } %>
+			</div>
+			
+		<% } else { %>
+			<div id="called-numbers"></div>
+		<% } %>
+
+		<div id="players">
+			<section>
+				<% for (let player of gameInfo.players) { %>
+					<% if (session.user.userId===player.user_id) { %>
+						
+						<div class="bingo-card" id="player<%= player.user_id %>">
+							<h2>Player <%= player.username %>
+							</h2>
+							<% for (let row=0; row < player.card_data.length; row++) { %>
+								<div class="bingo-row">
+									<% for (let col=0; col < player.card_data[row].length; col++) { %>
+										<% 
+										const cellId = player.user_id + '-' + col + '-' + row;
+										const isMidCell = row == 2 && col == 2;  // Check if it's the special cell
+										const cellClass = gameInfo.markedCells.includes(cellId) || isMidCell ? "bingo-cell marked" : "bingo-cell";
+										%>
+										<div class="<%= cellClass %>"
+											 id="<%= cellId %>"
+											 <% if (!isMidCell) { %>onclick="markNumber(this)"<% } %>>
+											<%= player.card_data[col][row]===0 ? "Free" : player.card_data[col][row] %>
+										</div>
+									<% } %>
+								</div>
+							<% } %>
+						</div>
+
+
+						<% } else { %>
+							<div class="bingo-card small" id="player<%= player.user_id %>">
+								<h4><%= player.username %></h4>
+								<% for (let row=0; row < player.card_data.length; row++) { %>
+									<div class="bingo-row">
+										<% for (let col=0; col < player.card_data[row].length; col++) { %>
+											<% 
+											const cellId = player.user_id + '-' + col + '-' + row;
+											const cellClass = gameInfo.markedCells.includes(cellId) || (row == 2 && col == 2) ? "bingo-cell marked" : "bingo-cell";
+											%>
+											<div class="<%= cellClass %>"
+												id="<%= player.user_id + '-' + col + '-' + row %>">
+											</div>
+											<% } %>
+									</div>
+									<% } %>
+							</div>
+							<% } %>
+						<% } %>
+					
+			</section>
+			<button class="startButton" id="bingoButton"
+							onclick="checkWon('<%= session.user.userId %>','<%= gameInfo.room_id %>')">Bingo</button>
+		</div>
+
+		<%- include('partials/chat', { session: session, roomId: gameInfo.room_id }) %>
+			<script hidden>
+				const userId = '<%= session.user.userId%>'
+				const hostId = '<%= gameInfo.host_id %>'
+				const userName = '<%= session.user.username %>'
+				const startTime = '<%= gameInfo.start_time %>'; // Adjust format as needed
+				const drawn_number_length = '<%= gameInfo.drawn_number.length %>'
+				const drawnNumbers = '<%= gameInfo.drawn_number %>'.split(', ').map(Number);
+
+			</script>
+
+			<script src="/script/game.js"></script>
+</body>
+
 </html>

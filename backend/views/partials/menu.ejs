@@ -1,0 +1,83 @@
+
+<section class="menu-cubes">
+    <div class="logo">
+        <h2> BINGO </h2> <% if (locals.session.user) { %><span><%= locals.session.user.username %></span><% } %>
+    </div>
+<div class="container">
+    
+    <a href="/" class="button">
+        <!-- <div class="box_shadow"></div> -->
+        <!-- <span>Home</span> -->    
+        <div class="menuBox">
+            <div class="box_face box_face_front"><i class="fa-solid fa-house"></i></div>
+            <div class="box_face box_face_right"></div>
+            <div class="box_face box_face_back"></div>
+            <div class="box_face box_face_left"></div>
+            <div class="box_face box_face_top"></div>
+        </div>
+    </a>
+    
+    <a href="/lobby" class="button">
+        <div class="box_shadow"></div>
+        <span>Lobby</span>
+        <div class="menuBox">
+            <div class="box_face box_face_front"><i class="fa-solid fa-dice-d20"></i></ion-icon></div>
+            <div class="box_face box_face_right"></div>
+            <div class="box_face box_face_back"></div>
+            <div class="box_face box_face_left"></div>
+            <div class="box_face box_face_top"></div>
+        </div>
+    </a>
+</a>
+
+    <a href="#" class="button" id="chatButton">
+        <div class="box_shadow"></div>
+        <span>Chat</span>
+        <div class="menuBox">
+            <div class="box_face box_face_front"><i class="fa-brands fa-rocketchat"></i></div>
+            <div class="box_face box_face_right"></div>
+            <div class="box_face box_face_back"></div>
+            <div class="box_face box_face_left"></div>
+            <div class="box_face box_face_top"></div>
+        </div>
+    </a>
+
+
+    <% if (session && session.user) { %>
+        <!-- <a href="/profile">
+        <div class="button">
+            <div class="box_shadow"></div>
+            <span>Profile</span>
+            <div class="menuBox">
+                <div class="box_face box_face_front"><i class="fa-solid fa-user"></i></ion-icon></div>
+                <div class="box_face box_face_right"></div>
+                <div class="box_face box_face_back"></div>
+                <div class="box_face box_face_left"></div>
+                <div class="box_face box_face_top"></div>
+            </div>
+        </div>
+        </a> -->
+
+    
+        <form action="/logout" method="POST">
+            <button class="button" type="submit">
+                <div class="box_shadow"></div>
+                <span>Profile</span>
+                <div class="menuBox">
+                    <div class="box_face box_face_front"><i class="fa-solid fa-right-to-bracket"></i></div>
+                    <div class="box_face box_face_right"></div>
+                    <div class="box_face box_face_back"></div>
+                    <div class="box_face box_face_left"></div>
+                    <div class="box_face box_face_top"></div>
+                </div>
+            </div>
+        </form>
+        
+    <% } %>
+   
+</div>
+</section>
+<!-- </div> -->
+<!-- menu cubes icon-->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

@@ -1,80 +1,189 @@
-body {
-    height: 100%;
-    background-image: url('/assets/images/background.jpg');
-    background-size: cover;
-    overflow: hidden;
+
+*{
+    font-family: sans-serif;
 }
 
-
-section {
-    height: 88vh;
-    display: flex;
-    flex-wrap: wrap;
+body{
+    background-color: #232c33;
     justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
-.container {
-    padding-top: 20px;
-    border-radius: 15px;
-    max-width: 450px;
-    min-width: 350px;
+.flip-form{
+    background-color: transparent;
+    width: 350px;
+    height:550px;
+    perspective: 1000px;
+    margin: auto;
 }
 
-
-.form-container {
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px 20px;
-    z-index: 10;
-    border: #ffffff solid thin;
-    background-color: #0000007c;
-}
-
-.form-container > h2 {
-    font-size: 28px;
-}
-
-.input-form {
-    margin: 0 20px;
-}
-
-.input-form > input {
+.flip-form-inner{
     width: 100%;
-    margin: 30px 0;
-    padding: 10px 0 10px 5px;
-    border-radius: 10px;
-    font-size: 15px;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-.input-form > input[type="submit"] {
-    padding: 12px;
+.flip-form-front,.flip-form-back{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.flip-form-front{
+    background: linear-gradient(180deg, #232c33 40%, #45615d);
+    color: #2980b9;
+    border-radius: 10px;
+    box-shadow: 0 0 3.2px #fff,0 0 3.2px #fff, 0 0 20.8px #2980b9, inset 0 0 20.8px #2980b9;
+
+}
+
+.flip-form-back{
+    background: linear-gradient(180deg, #232c33 40%, #45615d);
+    color: #2980b9;
+    border-radius: 10px;
+    box-shadow: 0 0 3.2px #fff,0 0 3.2px #fff, 0 0 20.8px #2980b9, inset 0 0 20.8px #2980b9;
+    transform: rotateY(180deg);
+
+}
+
+.flipped .flip-form-inner{
+    transform: rotateY(180deg);
+}
+
+form{
+    position: relative;
+}
+
+.header{
+    position: relative;
+    border-radius: 10px 10px 50px 50px; 
+}
+
+.header h2{
+    color: #fff;
+    padding: 15px;
+    margin:20px;
+}
+
+.inputBox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 30px;
+}
+
+.inputBox input[type="text"],
+.inputBox input[type="password"]{
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding-inline: 10px;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+.login-link p, .signup-link p{
     color: white;
+    font-size: 17px;
+
+}
+
+.paraText input[type="submit"]{
+    width: auto;
+    height: auto;
+    font-size:  bold;
     border-radius: 10px;
+    border:none;
     cursor: pointer;
-    font: 500 20px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border: none;
-    background: #6072ff;
+    padding:10px;
+    font-size: 17px;
+}
+ 
+.paraText input[type="submit"]:hover{
+    color: #fff;
+    background-color: #2980b9;
 }
 
-.input-form > input[type="submit"]:hover {
-    background: #36ab63;
+.inputBox label{
+    position: absolute;
+    padding: 2px;
+    top: 15px;
+    left: 20px;
+    font-size: 16px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
 }
 
-.atag {
-    font: 400 12px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #ffffff;
-    float: right;
-    padding: 20px;
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label{
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #232c33;
+    padding: 3px 5px;
+    font-size: 13px;
+    color: #2980b9;
 }
 
-.checkbox {
-    font: 400 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #ffffff;
-    float: left;
-    padding: 10px;
+.inputBox a{
+    position: relative;
+    bottom: 15px;
+    color: #2980b9;
+    text-decoration: none;
+    text-align: end;
 }
 
-.checkbox > a {
-    color: #ffffff;
+
+.icon{
+    /* position: relative; */
+    /* font-size: 20px; */
+    /* border: 2px solid #fff; */
+    color: #fff;
+    /* border-radius: 5px; */
+    /* padding: 2px; */
+    width: 20px;
+    cursor: pointer;
+    /* top: -10px; */
+
 }
+.btnSubmit{
+    /* position: relative; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin: 20px 30px; */
+    width: auto;
+    /* padding: 20px; */
+}
+
+.login-link a, .signup-link a{
+    color: #2980b9;
+    text-decoration: none;
+}
+
+p.paraText {
+    position: relative;
+    top: 50px;
+}
+
+a:hover{
+    color:#fff;
+    transition: 0.3s ease-in-out;
+}
+
+.icon:hover{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #2980b9;
+    transition: 0.3s ease-in-out;
+} 

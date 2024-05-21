@@ -1,0 +1,110 @@
+body {
+	margin: 0;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	/* background-color: rgb(216, 183, 38); */
+	/* background-image: url('/assets/images/waitBg.gif') ; */
+	/* background-size: cover; */
+	position: relative;
+}
+.card-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 100px;
+}
+.card {
+	width: 150px;
+	height: 200px;
+	padding: 10px;
+	margin: 10px;
+	background: linear-gradient(to top, rgb(255, 187, 0), rgb(255, 119, 0));
+	/* background-color: rgb(201, 131, 26); */
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0px;
+	position: relative;
+}
+.card i {
+	height: auto;
+	display: flex;
+	width: auto;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-content {
+	display: flex;
+	justify-content: center;
+	padding: 16px;
+}
+.buttons {
+	font-size: 14px;
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	border-color: rgba(0, 0, 0, 0.4);
+	color: white;
+	margin-top: 20px;
+}
+
+.buttons.ready:hover {
+	background-color: rgb(0, 175, 32);
+}
+
+.buttons.kick:hover {
+	background-color: rgb(255, 0, 55);
+}
+
+.statusColor {
+	left: 10px;
+	top: 10px;
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	border-radius: 50px;
+}
+
+.actionBtn {
+	display: flex;
+	position: fixed;
+	bottom: 5px;
+	right: 10px;
+	gap: 5px;
+}
+
+.actionBtn > button {
+	background-color: #0c0d0c; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 30px;
+	text-align: center;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 10px;
+}
+
+.startButton:hover {
+	background-color: rgb(0, 223, 112);
+}
+
+.actionBtn > button:active {
+	transform: translateY(5px);
+}
+
+.exitButton:hover {
+	background-color: red;
+}
+
+h1 {
+	font-size: 3rem;
+	margin-bottom: 2rem;
+}
+h2{
+	text-align: center;
+}
+p {
+	font-size: 20px;
+}
+

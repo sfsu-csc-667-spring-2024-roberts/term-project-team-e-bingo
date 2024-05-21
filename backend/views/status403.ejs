@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>403 Forbidden</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+  </style>
+  <script>
+    let countdown = 5;
+    function updateCountdown() {
+      document.getElementById('countdown').innerText = countdown;
+      countdown--;
+      if (countdown < 0) {
+        window.location.href = '/lobby';
+      } else {
+        setTimeout(updateCountdown, 1000);
+      }
+    }
+    window.onload = updateCountdown;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>403 Forbidden</h1>
+    <p>You are not authorized to access this page.</p>
+    <p>Redirecting to lobby in <span id="countdown">5</span> seconds...</p>
+  </div>
+</body>
+</html>
